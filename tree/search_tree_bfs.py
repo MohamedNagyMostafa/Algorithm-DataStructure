@@ -61,7 +61,7 @@ def bfs(tree):
 
     queue.enqueue(tree.get_root())
     visited.append(tree.get_root())
-    
+
     while not queue.is_empty():
         node = queue.dequeue()
         if node.has_left_child():
