@@ -74,9 +74,9 @@ def bfs(tree):
     return visited
 
 # build a tree
-tree = Tree(value='apple')
-tree.get_root().set_left_child(Node('banana'))
-tree.get_root().set_right_child(Node('cherry'))
-tree.get_root().get_left_child().set_left_child(Node('dates'))
-
-print([node.value for node in bfs(tree)])
+# tree = Tree(value='apple')
+# tree.get_root().set_left_child(Node('banana'))
+# tree.get_root().set_right_child(Node('cherry'))
+# tree.get_root().get_left_child().set_left_child(Node('dates'))
+#
+# print([node.value for node in bfs(tree)])
