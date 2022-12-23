@@ -11,6 +11,7 @@ class HashMap:
         self.bucket_array   = [None for _ in range(initial_size)]
         self.prime          = 37
         self.num_entries    = 0
+        self.load_factor    = 0.7
 
     def put(self, key, value):
         # Get hash code location by key
@@ -32,6 +33,11 @@ class HashMap:
             node = LinkedListNode(key=key, value=value)
             self.bucket_array[index] = node
             self.num_entries += 1
+
+        # check load factor
+        if self.num_entries / len(self.bucket_array) > self.load_factor:
+            print('rehashing', self.num_entries / len(self.bucket_array))
+            self._rehash()
 
     def get(self, key):
         index = self.get_bucket_index(key= key)
@@ -58,3 +64,39 @@ class HashMap:
 
     def size(self):
         return self.num_entries
+
+    def _rehash(self):
+        old_bucket_array    = self.bucket_array
+        self.bucket_array   = [None for _ in range(len(old_bucket_array) * 2)]
+        self.num_entries    = 0
+        for bucket in old_bucket_array:
+            while bucket is not None:
+                self.put(key= bucket.key, value= bucket.value)
+                bucket = bucket.next
+
+
+hash_map = HashMap(7)
+
+hash_map.put("one", 1)
+print(hash_map.num_entries/len(hash_map.bucket_array))
+print(len(hash_map.bucket_array))
+hash_map.put("two", 2)
+print(hash_map.num_entries/len(hash_map.bucket_array))
+print(len(hash_map.bucket_array))
+hash_map.put("three", 3)
+print(hash_map.num_entries/len(hash_map.bucket_array))
+print(len(hash_map.bucket_array))
+hash_map.put("neo", 11)
+print(hash_map.num_entries/len(hash_map.bucket_array))
+print(len(hash_map.bucket_array))
+hash_map.put("nea", 11)
+print(hash_map.num_entries/len(hash_map.bucket_array))
+print(len(hash_map.bucket_array))
+
+print("size: {}".format(hash_map.size()))
+
+
+print("one: {}".format(hash_map.get("one")))
+print("neo: {}".format(hash_map.get("neo")))
+print("three: {}".format(hash_map.get("three")))
+print("size: {}".format(hash_map.size()))
