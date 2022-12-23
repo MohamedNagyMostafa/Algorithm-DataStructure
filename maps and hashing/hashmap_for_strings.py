@@ -74,6 +74,21 @@ class HashMap:
                 self.put(key= bucket.key, value= bucket.value)
                 bucket = bucket.next
 
+    def delete(self, key):
+        index = self.get_bucket_index(key= key)
+        curr_node = self.bucket_array[index]
+        prev_node = None
+        while curr_node is not None:
+            if curr_node.key == key:
+                self.num_entries -=1
+                if prev_node is None:
+                    self.bucket_array[index] = curr_node.next
+                else:
+                    prev_node.next = curr_node.next
+
+                return
+            prev_node = curr_node
+            curr_node = curr_node.next
 
 hash_map = HashMap(7)
 
@@ -93,6 +108,16 @@ hash_map.put("nea", 11)
 print(hash_map.num_entries/len(hash_map.bucket_array))
 print(len(hash_map.bucket_array))
 
+print("size: {}".format(hash_map.size()))
+
+
+print("one: {}".format(hash_map.get("one")))
+print("neo: {}".format(hash_map.get("neo")))
+print("three: {}".format(hash_map.get("three")))
+print("size: {}".format(hash_map.size()))
+
+hash_map.delete('neo')
+print('############## Delete #############')
 print("size: {}".format(hash_map.size()))
 
 
