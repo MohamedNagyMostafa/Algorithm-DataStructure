@@ -25,8 +25,23 @@ def find_first(array, target):
 
     return index
 
+def find_first_last(array, target):
+    index = binary_search(array= array, target= target)
+    first = index
+    last = index
+
+    if index == -1:
+        return -1
+    while array[first - 1] == target:
+        first -= 1
+    while array[last + 1] == target:
+        last+=1
+
+    return first, last
+
 target  = 7
 array   =  [1, 3, 5, 7, 7, 7, 8, 11, 12, 13, 14, 15]
 
 print(f'Number {target} in array {array} at index({binary_search(array= array, target= target)})')
 print(f'Number {target} in array {array} at first index({find_first(array= array, target= target)})')
+print(f'Number {target} in array {array} at first and last indices({find_first_last(array= array, target= target)})')
