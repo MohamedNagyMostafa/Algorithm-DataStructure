@@ -85,7 +85,7 @@ class RedBlackTree(object):
                 node.parent.left, node.parent.parent.right, node.parent.parent.parent, node.parent.parent = node.parent.parent, None, node.parent, node.parent.parent.parent
 
             if node.parent.left is node and node.parent.parent.left is node.parent:
-            
+
                 # Swap color
                 node.parent.color, node.parent.parent.color = node.parent.parent.color, node.parent.color
 
