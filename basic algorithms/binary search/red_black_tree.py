@@ -15,7 +15,7 @@ class RedBlackTree(object):
     def insert(self, value):
         inserted_node = self.insert_node_to_tree(self.root, value)
 
-        self.rebalance()
+        self.rebalance(inserted_node)
 
     def search(self, value):
         return False
@@ -44,6 +44,8 @@ class RedBlackTree(object):
             return
 
         # Case 3 parent and parent's sibling are red
+        if node.parent.parent is None: # No sblings
+            return
         parent_sibling = node.parent.parent.right if node.parent.parent.left is node.parent else node.parent.parent.left
         if node.parent.color == 'red' and parent_sibling.color == 'red':
             node.parent.parent.left.color   = 'black'
@@ -51,8 +53,51 @@ class RedBlackTree(object):
             node.parent.parent.color        = 'red'
             self.rebalance(node.parent.parent)
 
-        # Case 4 
+        # Case 4/5
         if node.parent.color == 'red' and parent_sibling.color == 'black':
-            # Case 4 inserted node on the right of the parent
-            if node.parent.right is node:
-                node.left, node.par
+            # Case 4 inserted node is opposite of parent node (right-left) or (left-right)
+            if node.parent.right is node and node.parent.parent.left is node.parent:
+                # left rotation
+                node.parent.right, node.parent.parent.left,  node.left = None, node, node.parent
+                node = node.left
+            if node.parent.left is node and node.parent.parent.right is node.parent:
+                # right rotation
+                node.parent.left, node.parent.parent.right, node.right = None, node, node.parent
+                node = node.right
+            # Case 5 two red nodes on a path
+            if node.parent.right is node and node.parent.parent.right is node.parent:
+                if node.parent.parent.parent.right is node.parent.parent:
+                    node.parent.parent.parent.right = node.parent.parent
+                else:
+                    node.parent.parent.parent.left = node.parent.parent
+
+                node.parent.left, node.parent.parent.right = node.parent.parent, None
+
+                # Swap color
+                node.parent.color, node.parent.parent.color = node.parent.parent.color, node.parent.color
+
+            if node.parent.left is node and node.parent.parent.left is node.parent:
+                if node.parent.parent.parent.left is node.parent.parent:
+                    node.parent.parent.parent.left = node.parent.parent
+                else:
+                    node.parent.parent.parent.right = node.parent.parent
+
+                node.parent.right, node.parent.parent.left = node.parent.parent, None
+
+                # Swap color
+                node.parent.color, node.parent.parent.color = node.parent.parent.color, node.parent.color
+
+def print_tree(node, level=0):
+    print('   ' * (level - 1) + '+--' * (level > 0) + '%s' % node.value, node.color)
+    if node.left:
+        print_tree(node.left, level + 1)
+    if node.right:
+        print_tree(node.right, level + 1)
+
+tree = RedBlackTree(9)
+tree.insert(6)
+tree.insert(19)
+
+print_tree(tree.root)
+tree.insert(13)
+print_tree(tree.root)
