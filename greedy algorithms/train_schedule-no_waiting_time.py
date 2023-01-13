@@ -1,3 +1,16 @@
+'''
+# While we have trains
+	# Clear platform/s if needed
+	# If a platform available, add the train.
+	# else create new platform, add the train
+
+Data structure
+
+# trains in priority queue based on departure
+# available platforms (list)
+# busy platforms (priority queue based on arrival)
+'''
+
 from queue import PriorityQueue
 
 class Train:
