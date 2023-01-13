@@ -7,9 +7,6 @@ def bubble_sort(arr):
 
 
 
-# Dividing to parts
-
-
 def merge_sort(arr, s ,  e):
     if e - s < 2:
         return []
