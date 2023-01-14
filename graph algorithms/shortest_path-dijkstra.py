@@ -64,7 +64,7 @@ def dijkstra_algorithm(queue, target):
             curr_path_cost = curr_node.distance + edge.weight
             if edge.node.distance > curr_path_cost:
                 edge.node.distance = curr_path_cost
-                
+
             queue.put(edge.node)
 
     return dijkstra_algorithm(queue= queue, target= target)
