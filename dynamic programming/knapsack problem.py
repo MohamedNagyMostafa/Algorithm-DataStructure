@@ -29,34 +29,6 @@ def knapsack_max_value(max_weight, items):
     print(lookup_table)
     return lookup_table[-1]
 
-
-# def knapsack_max_value(max_weight, items):
-#     items   = sorted(items, key = lambda x: x.weight)
-#
-#     lookup_table    = [0 for _ in range(max_weight + 1)]
-#     not_used_items  = []
-#
-#     for item in items:
-#         if item[0] > max_weight:
-#             continue
-#         if item[1] > lookup_table[item[0]]:
-#             lookup_table[item[0]:] = [item[1]] * len(lookup_table[item[0]:])
-#         else:
-#             not_used_items.append(item)
-#     for item in not_used_items:
-#         if item[0] > max_weight:
-#             continue
-#         for weight, value in enumerate(lookup_table):
-#             if item[0] == weight:
-#                 continue
-#             if item[0] + weight > max_weight:
-#                 break
-#             if item[1] + value > lookup_table[item[0] + weight]:
-#                 lookup_table[item[0] + weight] = item[1] + value
-#
-#     print(lookup_table)
-#     return lookup_table[-1]
-
 Item        = namedtuple('Item', ['weight', 'value'])
 
 items       = [Item(10, 7), Item(9, 8), Item(5, 6)]
