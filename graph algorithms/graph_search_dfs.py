@@ -3,6 +3,7 @@
 # re-call children
 '''
 
+
 class GraphNode:
 
     def __init__(self, val):
