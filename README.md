@@ -4,8 +4,11 @@ This repository contains a collection of various algorithms and data structures 
 
 ## Binary Search
 `binary_search.py`: implementation of the binary search algorithm
+
 `check_word_validation_trie.py`: implementation of checking if a given word is valid or not using a trie data structure
+
 `heap/priority_queue.py`: implementation of a priority queue using a heap data structure
+
 `red_black_tree.py`: implementation of a red-black tree data structure
 
 ## Dynamic Programming
@@ -13,12 +16,16 @@ This repository contains a collection of various algorithms and data structures 
 
 ## Graph Algorithms
 `graph_search_bfs.py`: implementation of a breadth-first search algorithm for graphs
+
 `graph_search_dfs.py`: implementation of a depth-first search algorithm for graphs
+
 `minimum_bridge_connection.py`: implementation of finding the minimum bridge connections in a graph
+
 `shortest_path-dijkstra.py`: implementation of Dijkstra's shortest path algorithm for graphs
 
 ## Greedy Algorithms
 `minimum_operations.py`: implementation of finding the minimum operations required to convert one string to another
+
 `train_schedule-no_waiting_time.py`: implementation of a train scheduling algorithm without waiting time
 
 ## Linked List
@@ -26,13 +33,18 @@ This repository contains a collection of various algorithms and data structures 
 
 ## Maps and Hashing
 `hashmap_for_strings.py`: implementation of a hash map data structure for strings
+
 `staircase_problem.py`: implementation of finding the number of ways to climb a staircase with a given number of steps
 
 ## Queue
 `queue_by_array.py`: implementation of a queue data structure using an array
+
 `queue_by_dynamic_list.py`: implementation of a queue data structure using a dynamic list
+
 `queue_by_linkedlist.py`: implementation of a queue data structure using a linked list
+
 `queue_by_stack.py`: implementation of a queue data structure using two stacks
+
 `queue_reversed.py`: implementation of a queue data structure with reversed order
 
 ## Sorting Algorithms
@@ -40,10 +52,15 @@ This repository contains a collection of various algorithms and data structures 
 
 ## Stack
 `stack_from_array.py`: implementation of a stack data structure using an array
+
 `stack_from_linkedlist.py`: implementation of a stack data structure using a linked list
+
 `stack_from_listpy3.py`: implementation of a stack data structure using a list
+
 `stack_parenthese.py`: implementation of a parentheses balancing algorithm using a stack
+
 `stack_postfix_operation.py`: implementation of postfix expression evaluation using a stack
+
 `stack_reverse.py`: implementation of reversing a string using a stack
 
 ## Installation
